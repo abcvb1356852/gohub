@@ -19,7 +19,7 @@ func RegisterAPIRoutes(r *gin.Engine) {
 			// 判断手机是否已注册
 			authGroup.POST("/signup/phone/exist", suc.IsPhoneExist)
 			// 判断邮箱是否已注册
-			authGroup.POST("/singup/email/exist", suc.IsEmailExist)
+			authGroup.POST("/signup/email/exist", suc.IsEmailExist)
 		}
 	}
 }
