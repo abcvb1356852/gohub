@@ -61,7 +61,7 @@ func (rds RedisClient) Ping() error {
 // Set 存储 key 对应的 value, 切设置 expiration 过期时间
 func (rds RedisClient) Set(key string, value interface{}, expiration time.Duration) bool {
 	if err := rds.Client.Set(rds.Context, key, value, expiration).Err(); err != nil {
-		logger.ErrorString("Redis", "set", err.Error)
+		logger.ErrorString("Redis", "set", err.Error())
 		return false
 	}
 	return true
