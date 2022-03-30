@@ -13,6 +13,7 @@ require (
 	github.com/spf13/viper v1.10.1
 	github.com/thedevsaddam/govalidator v1.9.10
 	go.uber.org/zap v1.21.0
+	golang.org/x/crypto v0.0.0-20220321153916-2c7772ba3064 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gorm.io/driver/mysql v1.3.2
 	gorm.io/driver/sqlite v1.3.1
