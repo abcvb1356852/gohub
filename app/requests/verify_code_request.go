@@ -1,7 +1,7 @@
 package requests
 
 import (
-	"gohub/requests/validators"
+	"gohub/app/requests/validators"
 
 	"github.com/gin-gonic/gin"
 	"github.com/thedevsaddam/govalidator"
