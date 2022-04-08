@@ -16,13 +16,13 @@ var migrationFiles []MigrationFile
 type MigrationFile struct {
 	Up       migrationFunc
 	Down     migrationFunc
-	fileName string
+	FileName string
 }
 
 // Add 新增一个迁移文件，所有的迁移文件都需要调用此方法来注册
 func Add(name string, up migrationFunc, down migrationFunc) {
 	migrationFiles = append(migrationFiles, MigrationFile{
-		fileName: name,
+		FileName: name,
 		Up:       up,
 		Down:     down,
 	})
