@@ -33,3 +33,8 @@ func (userModel *User) Save() (rowsAffected int64) {
 	result := database.DB.Save(&userModel)
 	return result.RowsAffected
 }
+
+func All() (users []User) {
+	database.DB.Find(&users)
+	return
+}
