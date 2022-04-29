@@ -22,7 +22,7 @@ func RegisterAPIRoutes(r *gin.Engine) {
 		authGroup := v1.Group("/auth")
 		// 限流中间件：每小时限流，作为参考 Github API 每小时最多 60 个请求（根据 IP）
 		// 测试时，可以调高一点
-		authGroup.Use(middlewares.LimitIP("1000-H"))
+		authGroup.Use(middlewares.LimitIP("100-H"))
 		{
 
 			// 登录

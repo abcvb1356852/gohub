@@ -2,6 +2,7 @@ package middlewares
 
 import (
 	"gohub/pkg/app"
+	"gohub/pkg/console"
 	"gohub/pkg/limiter"
 	"gohub/pkg/logger"
 	"gohub/pkg/response"
@@ -21,12 +22,13 @@ import (
 //
 func LimitIP(limit string) gin.HandlerFunc {
 	if app.IsTesting() {
-		limit = "1000000-H"
+		limit = "100-H"
 	}
 
 	return func(c *gin.Context) {
 		// 针对 IP 限流
 		key := limiter.GetKeyIP(c)
+		console.Warning("IP为：" + key)
 		if ok := limitHandler(c, key, limit); !ok {
 			return
 		}
@@ -71,7 +73,6 @@ func limitHandler(c *gin.Context, key string, limit string) bool {
 	c.Header("X-RateLimit-Limit", cast.ToString(rate.Limit))
 	c.Header("X-RateLimlit-Remaining", cast.ToString(rate.Remaining))
 	c.Header("X-RateLimit-Reset", cast.ToString(rate.Reset))
-
 	// 超额
 	if rate.Reached {
 		// 提示用户超额了
