@@ -2,7 +2,6 @@ package middlewares
 
 import (
 	"gohub/pkg/app"
-	"gohub/pkg/console"
 	"gohub/pkg/limiter"
 	"gohub/pkg/logger"
 	"gohub/pkg/response"
@@ -28,7 +27,6 @@ func LimitIP(limit string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// 针对 IP 限流
 		key := limiter.GetKeyIP(c)
-		console.Warning("IP为：" + key)
 		if ok := limitHandler(c, key, limit); !ok {
 			return
 		}
