@@ -27,5 +27,5 @@ func init() {
 		migrator.DropTable(&Category{})
 	}
 
-	migrate.Add("2022_04_29_112000_add_categories_table", up, down)
+	migrate.Add("2022_05_18_142309_add_categories_table", up, down)
 }

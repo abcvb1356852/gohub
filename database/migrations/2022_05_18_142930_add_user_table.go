@@ -29,5 +29,5 @@ func init() {
         migrator.DropTable(&User{})
     }
 
-    migrate.Add("2022_04_08_153255_add_users_table", up, down)
+    migrate.Add("2022_05_18_142930_add_user_table", up, down)
 }
