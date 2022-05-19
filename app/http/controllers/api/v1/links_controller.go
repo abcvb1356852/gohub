@@ -12,6 +12,6 @@ type LinksController struct {
 }
 
 func (ctrl *LinksController) Index(c *gin.Context) {
-	links := link.All()
-	response.Data(c, links)
+	// links := link.All() 不直接访问数据库，改为调用缓存中数据
+	response.Data(c, link.AllCached())
 }
