@@ -45,7 +45,7 @@ func Paginate(c *gin.Context, perPage int) (links []Link, paging paginator.Pagin
 
 func AllCached() (links []Link) {
 	// 设置缓存 key
-	cacheKey := "link:all"
+	cacheKey := "links:all"
 	// 设置过期时间
 	expireTime := 120 * time.Minute
 	// 取数据
