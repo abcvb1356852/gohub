@@ -10,7 +10,7 @@ type Link struct {
 	models.BaseModel
 
 	Name string `json:"name,omitempty"`
-	Url  string `json:"url,omitempty"`
+	URL  string `json:"url,omitempty"`
 
 	models.CommonTimestampsField
 }
