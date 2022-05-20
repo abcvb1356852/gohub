@@ -33,6 +33,7 @@ func (ctrl *UsersController) Index(c *gin.Context) {
 	})
 }
 
+// 修改用户资料
 func (ctrl *UsersController) UserUpdateProfile(c *gin.Context) {
 
 	request := requests.UserUpdateProfileRequest{}
@@ -49,5 +50,44 @@ func (ctrl *UsersController) UserUpdateProfile(c *gin.Context) {
 		response.Data(c, currentUser)
 	} else {
 		response.Abort500(c, "更新失败，请稍后尝试")
+	}
+}
+
+// 修改邮箱
+func (ctrl *UsersController) UpdateEmail(c *gin.Context) {
+
+	request := requests.UserUpdateEmailRequest{}
+	if ok := requests.Validate(c, &request, requests.UserUpdateEmail); !ok {
+		return
+	}
+
+	currentUser := auth.CurrentUser(c)
+	currentUser.Email = request.Email
+	rowAffected := currentUser.Save()
+
+	if rowAffected > 0 {
+		response.Success(c)
+	} else {
+		// 失败，显示错误提示
+		response.Abort500(c, "更新是啊比，请稍后尝试")
+	}
+}
+
+// 修改手机号码
+func (ctrl *UsersController) UpdatePhone(c *gin.Context) {
+
+	request := requests.UserUpdatePhoneRequest{}
+	if ok := requests.Validate(c, &request, requests.UserUpdatePhone); !ok {
+		return
+	}
+
+	currentUser := auth.CurrentUser(c)
+	currentUser.Phone = request.Phone
+	rowsAffected := currentUser.Save()
+
+	if rowsAffected > 0 {
+		response.Success(c)
+	} else {
+		response.Abort500(c, "更新失败，请稍后尝试~")
 	}
 }
