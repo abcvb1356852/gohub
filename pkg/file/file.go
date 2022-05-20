@@ -72,7 +72,7 @@ func SaveUploadAvatar(c *gin.Context, file *multipart.FileHeader) (string, error
 		return avatar, err
 	}
 
-	return avatarPath, nil
+	return dirName + resizeAvatarName, nil
 }
 
 func randomNameFromUploadFile(file *multipart.FileHeader) string {
